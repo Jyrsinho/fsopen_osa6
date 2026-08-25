@@ -1,9 +1,9 @@
+import  {useStatistics} from "../hooks/useStatisticsStore.js";
+
 const Statistics = () => {
-  const good = 0
-  const neutral = 0
-  const bad = 0
-  const all = 0
-  const average = 0
+  const {good, bad, neutral} = useStatistics()
+  const all = good + bad + neutral
+  const average = good - bad / all
   const positive = 0
   
   return (
