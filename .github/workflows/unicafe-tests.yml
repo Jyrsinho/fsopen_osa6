@@ -26,6 +26,10 @@ jobs:
         working-directory: unicafe-tests
         run: npx playwright install --with-deps chromium
 
+      - name: Run Unit tests
+        working-directory: unicafe
+        run: vitest
+
       - name: Run Playwright tests
         working-directory: unicafe-tests
         run: npx playwright test
