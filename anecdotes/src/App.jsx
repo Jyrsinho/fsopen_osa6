@@ -1,4 +1,5 @@
 import AnecdoteList from "./components/AnecdoteList.jsx";
+import AnecdoteForm from "./components/AnecdoteForm.jsx";
 
 const App = () => {
 
@@ -6,13 +7,7 @@ const App = () => {
   return (
     <div>
         <AnecdoteList/>
-     <h2>create new</h2>
-      <form>
-        <div>
-          <input data-testid="new" />
-        </div>
-        <button>create</button>
-      </form>
+        <AnecdoteForm/>
     </div>
   )
 }
