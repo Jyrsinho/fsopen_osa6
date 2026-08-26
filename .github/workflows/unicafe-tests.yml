@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Unit tests
         working-directory: unicafe
-        run: vitest
+        run: npm test
 
       - name: Run Playwright tests
         working-directory: unicafe-tests
