@@ -12,6 +12,8 @@ const useAnecdoteStore = create((set) => ({
     filter: '',
     actions: {
         vote: (id) => {
+            const anecdote = useAnecdoteStore().get().anecdotes.find(anecdote => anecdote.id === id)
+            const updatedAnecdote = await anecdoteService.update(id, anecdote)
             set(state => ({
                 anecdotes: state.anecdotes.map((anecdote) =>
                     anecdote.id === id

@@ -11,7 +11,6 @@ const getAll = async () => {
 }
 
 const create = async (newAnecdote) => {
-    console.log('anecdoteServices -  newAnecdote - ', newAnecdote)
     const options = {
         method: 'POST',
         body: JSON.stringify(newAnecdote),
@@ -20,13 +19,31 @@ const create = async (newAnecdote) => {
         }
     }
     const response = await fetch( baseURL, options)
-    console.log('response from server', response)
+    if (!response.ok) {
+        throw new Error('Failed to create anecdote')
+    }
+    return await response.json()
+}
+
+const update = async (id, anecdote) => {
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(anecdote)
+    }
+    const response = await fetch(`${baseURL}/${id}`, options)
+    if (!response.ok) {
+        throw new Error('Failed to update anecdote')
+    }
     return await response.json()
 }
 
 const anecdoteService = {
     getAll,
     create,
+    update
 }
 
 export default anecdoteService
