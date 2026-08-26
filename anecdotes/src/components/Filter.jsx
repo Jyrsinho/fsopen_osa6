@@ -1,8 +1,8 @@
-import {useAnecdoteActions} from "../store.js";
+import { useAnecdoteActions } from "../store.js";
 
 const Filter = () => {
 
-    const {setFilter} = useAnecdoteActions()
+    const { setFilter } = useAnecdoteActions()
 
     const handleChange = (event) => {
         // input-kentän arvo muuttujassa event.target.value
