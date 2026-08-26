@@ -10,4 +10,8 @@ const getAll = async () => {
     return await response.json()
 }
 
-export default { getAll }
+const anecdoteService = {
+    getAll,
+}
+
+export default anecdoteService

@@ -1,5 +1,6 @@
 
 import { create } from 'zustand'
+import anecdoteService from "./services/anecdotes.js";
 
 const getId = () => (100000 * Math.random()).toFixed(0)
 
@@ -28,10 +29,12 @@ const useAnecdoteStore = create((set) => ({
         setFilter: (filter) => {
             set(() => ({ filter: filter }))
         },
-        initialize: (anecdotes)  => {
-            set( () => ({ anecdotes: anecdotes }))
+        initialize: async () => {
+            const anecdotes = await anecdoteService.getAll()
+            set( () => ({ anecdotes }))
         }
-    } }))
+    }
+}))
 
 export const useAnecdotes = () => {
     const { anecdotes, filter } = useAnecdoteStore()
