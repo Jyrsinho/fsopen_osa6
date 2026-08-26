@@ -5,8 +5,8 @@ export function AnecdoteForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const anecdoteContent = e.target.anecdote.value
-        createAnecdote(anecdoteContent)
+        const newAnecdote = e.target.anecdote.value
+        createAnecdote(newAnecdote)
         e.target.reset()
     }
 
