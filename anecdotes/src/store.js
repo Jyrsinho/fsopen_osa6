@@ -36,7 +36,6 @@ const useAnecdoteStore = create((set) => ({
         },
         setFilter: (filter) => {
             set(() => ({filter: filter}))
-            console.log('filter is now ', filter)
         },
     }}))
 
