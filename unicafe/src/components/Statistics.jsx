@@ -1,11 +1,12 @@
 import  {useStatistics} from "../store.js";
 import countAverage from "../utils/countAverage.js";
+import countPositiveVotePercentage from "../utils/countPositiveVotePercentage.js";
 
 const Statistics = () => {
   const {good, bad, neutral} = useStatistics()
   const all = good + bad + neutral
   const average = countAverage(good, neutral, bad)
-  const positive = 0
+  const positive = countPositiveVotePercentage(good, neutral, bad)
   
   return (
     <div>
