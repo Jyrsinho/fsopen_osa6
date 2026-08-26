@@ -10,8 +10,23 @@ const getAll = async () => {
     return await response.json()
 }
 
+const create = async (newAnecdote) => {
+    console.log('anecdoteServices -  newAnecdote - ', newAnecdote)
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(newAnecdote),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const response = await fetch( baseURL, options)
+    console.log('response from server', response)
+    return await response.json()
+}
+
 const anecdoteService = {
     getAll,
+    create,
 }
 
 export default anecdoteService
