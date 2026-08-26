@@ -1,4 +1,4 @@
-import {useStatisticsActions} from "../hooks/useStatisticsStore.js";
+import {useStatisticsActions} from "../store.js";
 
 const Buttons = () => {
     const {voteGood, voteNeutral, voteBad} = useStatisticsActions()
