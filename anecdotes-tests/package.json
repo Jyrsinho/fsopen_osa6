@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "playwright test",
+    "test:ui": "playwright test --ui",
     "verify:tests-exist": "node verify-tests-exist.mjs",
     "verify:tests-not-vacuous": "node verify-tests-not-vacuous.mjs",
     "test:mutation": "node verify-tests-mutation.mjs",
