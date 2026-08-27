@@ -7,17 +7,21 @@ const asObject = anecdote => ({
     votes: 0
 })
 
-const useAnecdoteStore = create((set) => ({
+const useAnecdoteStore = create((set, get) => ({
     anecdotes: [],
     filter: '',
     actions: {
-        vote: (id) => {
-            const anecdote = useAnecdoteStore().get().anecdotes.find(anecdote => anecdote.id === id)
-            const updatedAnecdote = await anecdoteService.update(id, anecdote)
+        vote: async (id) => {
+            const anecdote = get().anecdotes.find(anecdote => anecdote.id === id)
+            const updatedAnecdote = {
+                ...anecdote,
+                votes: anecdote.votes + 1
+            }
+            const savedAnecdote = await anecdoteService.update(id, updatedAnecdote)
             set(state => ({
                 anecdotes: state.anecdotes.map((anecdote) =>
                     anecdote.id === id
-                        ? { ...anecdote, votes: anecdote.votes + 1 }
+                        ? savedAnecdote
                         : anecdote
                 )
             }))
@@ -39,8 +43,6 @@ const useAnecdoteStore = create((set) => ({
 
 export const useAnecdotes = () => {
     const { anecdotes, filter } = useAnecdoteStore()
-    console.log('anecdotes - ', anecdotes)
-    console.log('filter - ', filter)
     return anecdotes.filter(( anecdote) => {
         return anecdote.content.toLowerCase().includes(filter.toLowerCase())
     })
