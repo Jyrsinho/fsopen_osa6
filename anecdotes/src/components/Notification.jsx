@@ -32,7 +32,6 @@ const Notification = () => {
             clearTimeout(timeOutID)
         }
     }, [notification, resetNotification]);
-    
 
     const style = notification?.type === 'error' ? errorStyle : successStyle
 
