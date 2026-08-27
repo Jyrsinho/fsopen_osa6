@@ -22,7 +22,7 @@ const AnecdoteList = () => {
         }
     }
 
-    const handleRemove = (anecdote) => {
+    const handleDelete = (anecdote) => {
         console.log('lets remove anecdote - ', anecdote)
         try {
             removeAnecdote(anecdote.id)
@@ -48,7 +48,7 @@ const AnecdoteList = () => {
                     <div>
                         has {anecdote.votes}
                         <button onClick={() => handleVote(anecdote)}>vote</button>
-                        {anecdote.votes === 0 && <button onClick={() => handleRemove(anecdote)}>remove</button>}
+                        {anecdote.votes === 0 && <button onClick={() => handleDelete(anecdote)}>delete</button>}
                     </div>
                 </div>
             ))}
