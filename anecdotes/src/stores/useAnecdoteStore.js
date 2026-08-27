@@ -9,7 +9,7 @@ const asObject = anecdote => ({
 
 const useAnecdoteStore = create((set, get) => ({
     anecdotes: [],
-    filter: '',
+    filter:  '',
     actions: {
         vote: async (id) => {
             const anecdote = get().anecdotes.find(anecdote => anecdote.id === id)
@@ -30,6 +30,11 @@ const useAnecdoteStore = create((set, get) => ({
             const anecdoteObject = asObject(newAnecdoteContent);
             const createdAnecdote = await anecdoteService.create(anecdoteObject)
             set(state => ({ anecdotes: [...state.anecdotes, createdAnecdote] }))
+        },
+        removeAnecdote: async (id) => {
+            const anecdotes = get().anecdotes
+            const updatedAnecdotes = anecdotes.filter(anecdote => anecdote.id !== id)
+            set ( () => ({ anecdotes: updatedAnecdotes }))
         },
         setFilter: (filter) => {
             set(() => ({ filter: filter }))

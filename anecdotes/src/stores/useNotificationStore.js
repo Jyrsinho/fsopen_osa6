@@ -8,7 +8,7 @@ const useNotificationStore = create( (set) => ({
         },
         resetNotification: () => {
             set( ()=> ({ notification: null }))
-        }
+        },
     }
 }))
 
