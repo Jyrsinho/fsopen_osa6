@@ -24,11 +24,8 @@ const Notification = () => {
     const notification = useNotification()
     const { resetNotification } = useNotificationActions()
 
-    console.log('rendered Notification')
-
     useEffect(() => {
         const timeOutID = setTimeout( () => {
-            console.log('executing timeOut function for resetting notification')
             if (notification) resetNotification()
         }, 5000)
         return () => {
