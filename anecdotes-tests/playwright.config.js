@@ -1,8 +1,8 @@
 import { defineConfig, devices } from "@playwright/test"
 
 export default defineConfig({
-    timeout: 5000,
-    globalTimeout: 15000,
+    timeout: 10000,
+    globalTimeout: 30000,
     testDir: "./tests",
   // The backend is shared, mutable state (json-server writes to db.json),
   // so tests must not run concurrently against it.

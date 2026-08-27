@@ -35,7 +35,8 @@ const Notification = () => {
     
 
     const style = notification?.type === 'error' ? errorStyle : successStyle
-    
+
+    if (!notification) return null
     return (
         <div style={style} data-testid="notification">
             { notification?.message }

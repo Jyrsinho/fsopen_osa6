@@ -12,7 +12,7 @@ const AnecdoteList = () => {
             vote(anecdote.id)
             setNotification({
                 type: "success",
-                message: `Voted: ${anecdote.content}`,
+                message: `you voted '${anecdote.content}'`,
             })
         } catch (error) {
             setNotification({
