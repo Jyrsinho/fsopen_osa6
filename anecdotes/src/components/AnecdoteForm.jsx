@@ -1,12 +1,26 @@
-import { useAnecdoteActions } from "../store.js";
+import { useAnecdoteActions } from "../stores/useAnecdoteStore.js";
+import { useNotificationActions } from "../stores/useNotificationStore.js";
 
 export function AnecdoteForm() {
     const { createAnecdote } = useAnecdoteActions()
+    const { setNotification } = useNotificationActions()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const newAnecdote = e.target.anecdote.value
-        createAnecdote(newAnecdote)
+        try {
+            createAnecdote(newAnecdote)
+            setNotification({
+                type: "success",
+                message: "Anecdote successfully created.",
+            })
+        } catch (error) {
+            console.log(error)
+            setNotification({
+                type: "error",
+                message: error.message,
+            })
+        }
         e.target.reset()
     }
 
