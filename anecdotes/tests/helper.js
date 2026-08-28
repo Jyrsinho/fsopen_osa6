@@ -10,3 +10,11 @@ export const initializeStore = async () => {
     })
 }
 
+export const setFilter = async (filter) => {
+    const { result } = renderHook( () => useAnecdoteActions());
+
+    await act(async () => {
+        await result.current.setFilter(filter);
+    })
+}
+
