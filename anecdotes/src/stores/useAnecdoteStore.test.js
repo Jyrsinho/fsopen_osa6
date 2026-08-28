@@ -1,5 +1,8 @@
+// noinspection ES6RedundantAwait
+
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { renderHook , act } from "@testing-library/react";
+import anecdoteFixture from "../testFixtures/anecdoteTestFixtures.js";
 
 vi.mock('../services/anecdotes.js', () => ({
     default: {
@@ -21,21 +24,41 @@ beforeEach( () => {
 describe('useAnecdoteStore', () => {
     it('initialize loads anecdotes from service', async () => {
         const expectedAnecdotes = [
-            {
-                content: 'testing is easy when using Vitest',
-                votes: 0,
-                id: 1
-            }
+            anecdoteFixture.anecdoteWithOneVote
         ]
         anecdoteService.getAll.mockResolvedValue(expectedAnecdotes)
 
         const { result } = renderHook( () => useAnecdoteActions());
 
-        await act( async () => {
+        await act(async () => {
             await result.current.initialize()
         })
 
         const { result: anecdoteResult } = renderHook( () => useAnecdotes() );
+        expect(anecdoteResult.current).toEqual(expectedAnecdotes)
+    })
+    it('anecdotes from service are sorted based on votes', async () => {
+        const anecdotesFromService = [
+            anecdoteFixture.anecdoteWithOneVote,
+            anecdoteFixture.anecdoteWithThreeVotes,
+            anecdoteFixture.anecdoteWithTwoVotes
+        ]
+
+        const expectedAnecdotes = [
+            anecdoteFixture.anecdoteWithThreeVotes,
+            anecdoteFixture.anecdoteWithTwoVotes,
+            anecdoteFixture.anecdoteWithOneVote
+        ]
+
+        anecdoteService.getAll.mockResolvedValue(anecdotesFromService)
+
+        const { result } = renderHook( () => useAnecdoteActions() );
+
+        await act(async () => {
+            await result.current.initialize()
+        })
+
+        const { result: anecdoteResult } = renderHook(() => useAnecdotes() );
         expect(anecdoteResult.current).toEqual(expectedAnecdotes)
     })
 })
