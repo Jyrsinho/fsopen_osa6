@@ -16,10 +16,24 @@ const anecdoteWithThreeVotes = {
     id: 3
 }
 
+const anecdoteWithOnlyAChars = {
+    content: 'aaaa',
+    votes: 0,
+    id: 0
+}
+
+const anecdoteWithOnlyBChars = {
+    content: 'bbbb',
+    votes: 0,
+    id: 0
+}
+
 const anecdoteFixture = {
     anecdoteWithOneVote,
     anecdoteWithTwoVotes,
-    anecdoteWithThreeVotes
+    anecdoteWithThreeVotes,
+    anecdoteWithOnlyAChars,
+    anecdoteWithOnlyBChars
 }
 
 export default anecdoteFixture

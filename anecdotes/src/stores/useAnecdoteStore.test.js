@@ -50,9 +50,9 @@ describe('useAnecdoteStore', () => {
             anecdoteFixture.anecdoteWithOneVote
         ]
 
-        anecdoteService.getAll.mockResolvedValue(anecdotesFromService)
-
         const { result } = renderHook( () => useAnecdoteActions() );
+
+        anecdoteService.getAll.mockResolvedValue(anecdotesFromService)
 
         await act(async () => {
             await result.current.initialize()
@@ -61,4 +61,22 @@ describe('useAnecdoteStore', () => {
         const { result: anecdoteResult } = renderHook(() => useAnecdotes() );
         expect(anecdoteResult.current).toEqual(expectedAnecdotes)
     })
+    it('anecdotes are filtered', async () => {
+        const anecdotesFromService = [
+            anecdoteFixture.anecdoteWithOnlyAChars,
+            anecdoteFixture.anecdoteWithOnlyBChars
+        ]
+
+        anecdoteService.getAll.mockResolvedValue(anecdotesFromService)
+
+        const { result } = renderHook( () => useAnecdoteActions() );
+
+        await act(async () => {
+            await result.current.initialize()
+            await result.current.setFilter('a')
+        })
+
+        const { result: anecdoteResult } = renderHook(() => useAnecdotes() );
+        expect(anecdoteResult.current).toHaveLength(1)
+    });
 })
