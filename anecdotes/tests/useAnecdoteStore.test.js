@@ -2,16 +2,17 @@
 
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { renderHook , act } from "@testing-library/react";
-import anecdoteFixture from "../testFixtures/anecdoteTestFixtures.js";
+import anecdoteFixture from "./testFixtures/anecdoteTestFixtures.js";
 
-vi.mock('../services/anecdotes.js', () => ({
+vi.mock('../src/services/anecdotes.js', () => ({
     default: {
         getAll: vi.fn()
     },
 }))
 
-import anecdoteService from "../services/anecdotes.js";
-import useAnecdoteStore, { useAnecdoteActions, useAnecdotes } from "./useAnecdoteStore.js";
+import anecdoteService from "../src/services/anecdotes.js";
+import useAnecdoteStore, { useAnecdoteActions, useAnecdotes } from "../src/stores/useAnecdoteStore.js";
+import { initializeStore } from "./helper.js";
 
 beforeEach( () => {
     useAnecdoteStore.setState( {
@@ -27,12 +28,7 @@ describe('useAnecdoteStore', () => {
             anecdoteFixture.anecdoteWithOneVote
         ]
         anecdoteService.getAll.mockResolvedValue(expectedAnecdotes)
-
-        const { result } = renderHook( () => useAnecdoteActions());
-
-        await act(async () => {
-            await result.current.initialize()
-        })
+        await initializeStore()
 
         const { result: anecdoteResult } = renderHook( () => useAnecdotes() );
         expect(anecdoteResult.current).toEqual(expectedAnecdotes)
@@ -50,13 +46,8 @@ describe('useAnecdoteStore', () => {
             anecdoteFixture.anecdoteWithOneVote
         ]
 
-        const { result } = renderHook( () => useAnecdoteActions() );
-
         anecdoteService.getAll.mockResolvedValue(anecdotesFromService)
-
-        await act(async () => {
-            await result.current.initialize()
-        })
+        await initializeStore()
 
         const { result: anecdoteResult } = renderHook(() => useAnecdotes() );
         expect(anecdoteResult.current).toEqual(expectedAnecdotes)
