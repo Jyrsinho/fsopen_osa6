@@ -3,6 +3,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { renderHook , act } from "@testing-library/react";
 import anecdoteFixture from "./testFixtures/anecdoteTestFixtures.js";
+import useAnecdoteStore, { useAnecdoteActions, useAnecdotes } from "../src/stores/useAnecdoteStore.js";
+import { initializeStore, setFilter } from "./helper.js";
 
 vi.mock('../src/services/anecdotes.js', () => ({
     default: {
@@ -12,8 +14,7 @@ vi.mock('../src/services/anecdotes.js', () => ({
 }))
 
 import anecdoteService from "../src/services/anecdotes.js";
-import useAnecdoteStore, { useAnecdoteActions, useAnecdotes } from "../src/stores/useAnecdoteStore.js";
-import { initializeStore, setFilter } from "./helper.js";
+
 
 beforeEach( () => {
     useAnecdoteStore.setState( {
