@@ -1,6 +1,6 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
-import { useQuery } from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import {getAll} from "./requests.js";
 
 
@@ -12,8 +12,13 @@ const App = () => {
         retry: 1
     })
 
+    const voteAnecdoteMutation = useMutation({
+        mutationFn: vote,
+
+    })
+
     const handleVote = (anecdote) => {
-        console.log('vote')
+        console.log('vote ', anecdote)
     }
 
     if (result.isPending) {
