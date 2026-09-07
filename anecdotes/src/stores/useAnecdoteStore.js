@@ -42,17 +42,19 @@ const useAnecdoteStore = create((set, get) => ({
         },
         initialize: async () => {
             const anecdotes = await anecdoteService.getAll()
-            const sortedAnecdotes = anecdotes.toSorted((a,b) => b.votes - a.votes )
-            set( () => ({ anecdotes: sortedAnecdotes }))
+            set( () => ({ anecdotes: anecdotes }))
         }
     }
 }))
 
 export const useAnecdotes = () => {
     const { anecdotes, filter } = useAnecdoteStore()
-    return anecdotes.filter(( anecdote) => {
+    const filteredAnecdotes = anecdotes.filter(( anecdote) => {
         return anecdote.content.toLowerCase().includes(filter.toLowerCase())
     })
+    const sortedAnecdotes = filteredAnecdotes.toSorted((a,b) => b.votes - a.votes )
+    return sortedAnecdotes
 }
+
 export const useAnecdoteActions = () => useAnecdoteStore((state) => state.actions)
 export default useAnecdoteStore
