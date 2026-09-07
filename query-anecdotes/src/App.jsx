@@ -1,18 +1,14 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 import { useQuery } from "@tanstack/react-query";
+import {getAll} from "./requests.js";
 
 
 const App = () => {
+
     const result = useQuery({
         queryKey: ['anecdotes'],
-        queryFn: async () => {
-            const response = await fetch('http://localhost:3001/anecdotes');
-            if (!response.ok) {
-                throw new Error('Error fetching anecdotes');
-            }
-            return await response.json()
-        },
+        queryFn: getAll,
         retry: 1
     })
 
