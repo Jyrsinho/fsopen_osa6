@@ -16,8 +16,10 @@ const App = () => {
 
     const voteAnecdoteMutation = useMutation({
         mutationFn: updateAnecdote,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey:['anecdotes']})
+        onSuccess: (votedAnecdote) => {
+            const anecdotes = queryClient.getQueryData(['anecdotes']);
+            const updatedAnecdotes = anecdotes.map((anecdote) => ( (anecdote.id === votedAnecdote.id) ? votedAnecdote : anecdote ))
+            queryClient.setQueryData(['anecdotes'], updatedAnecdotes)
         },
     })
 
