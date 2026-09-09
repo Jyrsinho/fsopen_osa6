@@ -31,7 +31,7 @@ export const updateAnecdote = async (updatedAnecdote) => {
             'Content-Type': 'application/json',
         }
     }
-    const response = await fetch(baseURL, options)
+    const response = await fetch(`${baseURL}/${updatedAnecdote.id}`, options)
     if (!response.ok) {
         throw new Error('failed to update anecdote');
     }
