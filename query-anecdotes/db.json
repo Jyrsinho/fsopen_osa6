@@ -54,6 +54,11 @@
       "content": "testi testinen",
       "votes": 2,
       "id": "a7f18cb1-3a54-4dfe-921e-4328aaf409ae"
+    },
+    {
+      "content": "meneekö nyt",
+      "votes": 0,
+      "id": "9f47c97d-f229-4b73-8d98-5fa3deb32404"
     }
   ]
 }

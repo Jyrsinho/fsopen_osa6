@@ -9,6 +9,7 @@ export const getAll = async () => {
 }
 
 export const createAnecdote = async (newAnecdote) => {
+    console.log('requests - createAneccote - newAnecdote', newAnecdote)
     const options = {
         method: 'POST',
         body: JSON.stringify(newAnecdote),
