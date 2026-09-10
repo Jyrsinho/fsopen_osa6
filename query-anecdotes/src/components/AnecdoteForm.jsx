@@ -7,16 +7,12 @@ const AnecdoteForm = () => {
     const { addAnecdoteToServer } = useAnecdotes();
     const { setNotification } = useContext(NotificationContext)
     
-    const onCreate = (event) => {
+    const onCreate = async (event) => {
         event.preventDefault()
-        try {
-            const content = event.target.anecdote.value
-            event.target.reset()
-            addAnecdoteToServer(content);
-            setNotification(`created anecdote ${content}`)
-        }catch(e){
-            setNotification(e.message )
-        }
+        const content = event.target.anecdote.value
+        event.target.reset()
+        await addAnecdoteToServer(content);
+        setNotification(`created anecdote ${content}`)
     }
 
     return (

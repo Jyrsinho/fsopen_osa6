@@ -6,11 +6,7 @@ const Notification = () => {
     const { notification, setNotification } = useContext(NotificationContext)
 
     useEffect(() => {
-        const clearNotification = () => {
-            setNotification(null)
-        }
-
-        const timeOutID = setTimeout(clearNotification, 5000)
+        const timeOutID = setTimeout(() => setNotification(null), 5000)
 
         return () => {
             clearTimeout(timeOutID)
