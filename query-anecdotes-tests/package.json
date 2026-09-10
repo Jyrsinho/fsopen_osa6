@@ -6,7 +6,8 @@
   "scripts": {
     "test": "playwright test",
     "test:anecdotes": "playwright test tests/anecdotes.spec.js",
-    "test:notifications": "playwright test tests/notifications.spec.js"
+    "test:notifications": "playwright test tests/notifications.spec.js",
+    "test:ui": "playwright test --ui"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0"

@@ -1,9 +1,22 @@
-import {useContext} from "react";
+import { useContext, useEffect } from "react";
 import NotificationContext from "../NotificationContext.jsx";
 
 const Notification = () => {
 
-    const {notification} = useContext(NotificationContext)
+    const { notification, setNotification } = useContext(NotificationContext)
+
+    useEffect(() => {
+        const clearNotification = () => {
+            setNotification(null)
+        }
+
+        const timeOutID = setTimeout(clearNotification, 5000)
+
+        return () => {
+            clearTimeout(timeOutID)
+        }
+
+    }, [notification, setNotification]);
 
     const style = {
         border: "solid",
@@ -12,11 +25,13 @@ const Notification = () => {
         marginBottom: 5,
     }
 
-  return(
-    <div data-testid="notification" style={style}>
-        {notification}
-    </div>
-  )
+    if (!notification) return null
+
+    return(
+        <div data-testid="notification" style={style}>
+            {notification}
+        </div>
+    )
 }
 
 export default Notification

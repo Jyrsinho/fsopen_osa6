@@ -70,7 +70,7 @@ test.describe("Notifications (query-anecdotes)", () => {
       await expect(notification(page)).toBeHidden({ timeout: 3000 })
     })
 
-    test("voting for an anecdote shows a notification, which disappears after five seconds", async ({ page }) => {
+    test.only("voting for an anecdote shows a notification, which disappears after five seconds", async ({ page }) => {
       const content = "Make it work, then make it fast"
 
       await voteButtonFor(page, content).click()

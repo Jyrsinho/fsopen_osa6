@@ -1,74 +1,34 @@
 {
   "anecdotes": [
     {
-      "content": "If it hurts, do it more often",
-      "id": "47145",
-      "votes": 13
-    },
-    {
-      "content": "Adding manpower to a late software project makes it later!",
-      "id": "21149",
-      "votes": 9
-    },
-    {
-      "content": "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
-      "id": "69581",
-      "votes": 2
-    },
-    {
-      "content": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
-      "id": "36975",
+      "id": "f5540386-1c91-4f6c-a975-47f481695e82",
+      "content": "Make it work, then make it fast",
       "votes": 0
     },
     {
-      "content": "Premature optimization is the root of all evil.",
-      "id": "25170",
-      "votes": 0
+      "id": "9339d31e-e95d-484b-bc65-76d624ab840e",
+      "content": "There are two hard things in computer science",
+      "votes": 3
     },
     {
-      "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
-      "id": "98312",
-      "votes": 1
+      "id": "a67b6d2a-3bd8-4869-92a8-a068f92848d1",
+      "content": "Untested code is broken code",
+      "votes": 3
     },
     {
-      "content": "tämä ei päivity UI:hin",
-      "votes": 3,
-      "id": "5792b65d-1f94-406f-a5a2-0966f1f7d6aa"
+      "id": "53be9860-2a9d-4f2a-aa59-0be9fcc96b40",
+      "content": "Simplicity is the ultimate sophistication",
+      "votes": 5
     },
     {
-      "content": "tämä päivittyy",
+      "id": "170b3b93-c9e0-4632-aa3f-a1a9f9c7ea08",
+      "content": "Real artists ship code",
+      "votes": 7
+    },
+    {
+      "content": "Freshly baked wisdom",
       "votes": 0,
-      "id": "3b26ff6b-0444-4e0d-b5fb-9aa215b21dd7"
-    },
-    {
-      "content": "nyt tämä päivittyy",
-      "votes": 0,
-      "id": "cb294987-b1ae-4a53-aac3-4f6d59324a5e"
-    },
-    {
-      "content": "testi anekdootti",
-      "votes": 0,
-      "id": "783392ee-bfa2-4e7e-a1d8-4d6db080f325"
-    },
-    {
-      "content": "testi testinen",
-      "votes": 2,
-      "id": "a7f18cb1-3a54-4dfe-921e-4328aaf409ae"
-    },
-    {
-      "content": "meneekö nyt",
-      "votes": 0,
-      "id": "9f47c97d-f229-4b73-8d98-5fa3deb32404"
-    },
-    {
-      "content": "uusi anekdootti ",
-      "votes": 0,
-      "id": "5e5df8ba-9a15-4de5-b8dd-5948d3c5b38e"
-    },
-    {
-      "content": "uudempi anekdootti",
-      "votes": 0,
-      "id": "0e0c0483-ead3-4955-a7bd-aafd3a385440"
+      "id": "4c420a1f-638f-432d-8d90-6d46d9102524"
     }
   ]
 }

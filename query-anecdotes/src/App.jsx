@@ -1,12 +1,12 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
-import {useAnecdotes} from "./hooks/useAnecdotes.js";
+import { useAnecdotes } from "./hooks/useAnecdotes.js";
 import AnecdoteList from "./components/AnecdoteList.jsx";
-import {NotificationContextProvider} from "./NotificationContext.jsx";
+import { NotificationContextProvider } from "./NotificationContext.jsx";
 
 const App = () => {
 
-    const {anecdotes, isPending, isError, updateAnecdote}= useAnecdotes()
+    const { anecdotes, isPending, isError, updateAnecdote }= useAnecdotes()
 
     const handleVote = (anecdote) => {
         console.log('vote ', anecdote)
@@ -34,16 +34,16 @@ const App = () => {
     }
 
 
-  return (
-      <NotificationContextProvider>
-        <div>
-          <h3>Anecdote app</h3>
-          <Notification />
-          <AnecdoteForm />
-          <AnecdoteList anecdotes={anecdotes} handleVote={handleVote} />
-        </div>
-      </NotificationContextProvider>
-  )
+    return (
+        <NotificationContextProvider>
+            <div>
+                <h3>Anecdote app</h3>
+                <Notification />
+                <AnecdoteForm />
+                <AnecdoteList anecdotes={anecdotes} handleVote={handleVote} />
+            </div>
+        </NotificationContextProvider>
+    )
 }
 
 export default App

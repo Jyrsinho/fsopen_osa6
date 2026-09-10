@@ -6,8 +6,7 @@ const AnecdoteForm = () => {
 
     const { addAnecdoteToServer } = useAnecdotes();
     const { setNotification } = useContext(NotificationContext)
-
-
+    
     const onCreate = (event) => {
         event.preventDefault()
         try {
