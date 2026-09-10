@@ -1,6 +1,8 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 import {useAnecdotes} from "./hooks/useAnecdotes.js";
+import AnecdoteList from "./components/AnecdoteList.jsx";
+import {NotificationContextProvider} from "./NotificationContext.jsx";
 
 const App = () => {
 
@@ -33,22 +35,14 @@ const App = () => {
 
 
   return (
-    <div>
-      <h3>Anecdote app</h3>
-
-      <Notification />
-      <AnecdoteForm />
-
-      {anecdotes.map((anecdote) => (
-        <div key={anecdote.id}>
-          <div>{anecdote.content}</div>
-          <div>
-            has {anecdote.votes}
-            <button onClick={() => handleVote(anecdote)}>vote</button>
-          </div>
+      <NotificationContextProvider>
+        <div>
+          <h3>Anecdote app</h3>
+          <Notification />
+          <AnecdoteForm />
+          <AnecdoteList anecdotes={anecdotes} handleVote={handleVote} />
         </div>
-      ))}
-    </div>
+      </NotificationContextProvider>
   )
 }
 

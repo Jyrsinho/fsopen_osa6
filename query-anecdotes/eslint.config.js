@@ -7,6 +7,10 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 export default defineConfig([
   globalIgnores(['dist']),
   {
+      rules: {
+            "indent": ["error", 4],
+            "object-curly-spacing": ["error", "always"]
+        },
     files: ['**/*.{js,jsx}'],
     extends: [
       js.configs.recommended,
