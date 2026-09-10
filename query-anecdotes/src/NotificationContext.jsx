@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const NotificationContext = createContext(null)
+const NotificationContext = createContext()
 
 export default NotificationContext
 

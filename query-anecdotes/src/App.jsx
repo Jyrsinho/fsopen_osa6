@@ -1,21 +1,14 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
-import { useAnecdotes } from "./hooks/useAnecdotes.js";
+
 import AnecdoteList from "./components/AnecdoteList.jsx";
-import { NotificationContextProvider } from "./NotificationContext.jsx";
+import  { NotificationContextProvider } from "./NotificationContext.jsx";
+import { useAnecdotes } from "./hooks/useAnecdotes.js";
+
 
 const App = () => {
 
-    const { anecdotes, isPending, isError, updateAnecdote }= useAnecdotes()
-
-    const handleVote = (anecdote) => {
-        console.log('vote ', anecdote)
-        const votedAnecdote = {
-            ...anecdote,
-            votes: anecdote.votes + 1,
-        }
-        updateAnecdote(votedAnecdote)
-    }
+    const { isPending, isError } = useAnecdotes()
 
     if (isPending) {
         return (
@@ -33,14 +26,13 @@ const App = () => {
         )
     }
 
-
     return (
         <NotificationContextProvider>
             <div>
                 <h3>Anecdote app</h3>
                 <Notification />
                 <AnecdoteForm />
-                <AnecdoteList anecdotes={anecdotes} handleVote={handleVote} />
+                <AnecdoteList />
             </div>
         </NotificationContextProvider>
     )

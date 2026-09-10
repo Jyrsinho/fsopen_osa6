@@ -70,7 +70,7 @@ test.describe("Notifications (query-anecdotes)", () => {
       await expect(notification(page)).toBeHidden({ timeout: 3000 })
     })
 
-    test.only("voting for an anecdote shows a notification, which disappears after five seconds", async ({ page }) => {
+    test("voting for an anecdote shows a notification, which disappears after five seconds", async ({ page }) => {
       const content = "Make it work, then make it fast"
 
       await voteButtonFor(page, content).click()
@@ -86,7 +86,7 @@ test.describe("Notifications (query-anecdotes)", () => {
   })
 
   test.describe("exercise 6.21: error handling for anecdotes that are too short", () => {
-    test("submitting an anecdote shorter than 5 characters shows an error notification", async ({ page }) => {
+    test.only("submitting an anecdote shorter than 5 characters shows an error notification", async ({ page }) => {
       await page.locator('input[name="anecdote"]').fill("hey")
       await page.getByRole("button", { name: "create" }).click()
 
