@@ -20,9 +20,6 @@ export const useAnecdotes = () => {
             queryClient.setQueryData( ['anecdotes'], anecdotes.concat(newAnecdote))
         },
         onError: (error) => {
-            console.log('on error fired on mutation')
-            console.log('error - ', error)
-            console.log('error.message - ', error.message)
             setNotification(error.message)
         }
     })
