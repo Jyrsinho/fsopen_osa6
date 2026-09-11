@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
-import NotificationContext from "../NotificationContext.jsx";
+import { useEffect } from "react";
+import useNotification from "../hooks/useNotification.js";
 
 const Notification = () => {
 
-    const { notification, setNotification } = useContext(NotificationContext)
+    const { notification, setNotification } = useNotification()
 
     useEffect(() => {
         const timeOutID = setTimeout(() => setNotification(null), 5000)

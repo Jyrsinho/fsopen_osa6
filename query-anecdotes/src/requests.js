@@ -9,6 +9,7 @@ export const getAll = async () => {
 }
 
 export const createAnecdote = async (newAnecdote) => {
+    console.log('request layer - newAnecdote', newAnecdote)
     const options = {
         method: 'POST',
         body: JSON.stringify(newAnecdote),
@@ -17,7 +18,9 @@ export const createAnecdote = async (newAnecdote) => {
         }
     }
     const response = await fetch(baseURL, options)
+    console.log('request layer - response', response)
     if (!response.ok) {
+        console.log('request layer - response not ok')
         const errorData = await response.json();
         throw new Error(errorData.error);
     }

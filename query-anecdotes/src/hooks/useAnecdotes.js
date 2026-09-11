@@ -1,11 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createAnecdote, getAll, updateAnecdote } from "../requests.js";
-import { useContext } from "react";
-import NotificationContext from "../NotificationContext.jsx";
+import useNotification from "./useNotification.js";
 
 export const useAnecdotes = () => {
     const queryClient = useQueryClient();
-    const { setNotification } = useContext(NotificationContext);
+    const { setNotification } = useNotification()
 
     const result = useQuery({
         queryKey: ['anecdotes'],
@@ -18,6 +17,7 @@ export const useAnecdotes = () => {
         onSuccess: (newAnecdote) => {
             const anecdotes = queryClient.getQueryData(['anecdotes'])
             queryClient.setQueryData( ['anecdotes'], anecdotes.concat(newAnecdote))
+            setNotification(`created anecdote ${newAnecdote.content}`)
         },
         onError: (error) => {
             setNotification(error.message)
@@ -30,6 +30,7 @@ export const useAnecdotes = () => {
             const anecdotes = queryClient.getQueryData(['anecdotes']);
             const updatedAnecdotes = anecdotes.map((anecdote) => ( (anecdote.id === votedAnecdote.id) ? votedAnecdote : anecdote ))
             queryClient.setQueryData(['anecdotes'], updatedAnecdotes)
+            setNotification(`voted ${votedAnecdote.content}`)
         },
     })
     

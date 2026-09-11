@@ -1,18 +1,15 @@
 import { useAnecdotes } from "../hooks/useAnecdotes.js";
-import { useContext } from "react";
-import NotificationContext from "../NotificationContext.jsx";
 
 const AnecdoteForm = () => {
 
     const { addAnecdoteToServer } = useAnecdotes();
-    const { setNotification } = useContext(NotificationContext)
-    
-    const onCreate = async (event) => {
+
+    const onCreate = (event) => {
         event.preventDefault()
         const content = event.target.anecdote.value
         event.target.reset()
-        await addAnecdoteToServer(content);
-        setNotification(`created anecdote ${content}`)
+        console.log('onCreate - content -', content)
+        addAnecdoteToServer({ content });
     }
 
     return (
