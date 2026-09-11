@@ -9,7 +9,6 @@ export const getAll = async () => {
 }
 
 export const createAnecdote = async (newAnecdote) => {
-    console.log('requests - createAneccote - newAnecdote', newAnecdote)
     const options = {
         method: 'POST',
         body: JSON.stringify(newAnecdote),
@@ -18,7 +17,6 @@ export const createAnecdote = async (newAnecdote) => {
         }
     }
     const response = await fetch(baseURL, options)
-    console.log('createAnecdote - response', response);
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error);

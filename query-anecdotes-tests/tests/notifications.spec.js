@@ -86,7 +86,7 @@ test.describe("Notifications (query-anecdotes)", () => {
   })
 
   test.describe("exercise 6.21: error handling for anecdotes that are too short", () => {
-    test.only("submitting an anecdote shorter than 5 characters shows an error notification", async ({ page }) => {
+    test("submitting an anecdote shorter than 5 characters shows an error notification", async ({ page }) => {
       await page.locator('input[name="anecdote"]').fill("hey")
       await page.getByRole("button", { name: "create" }).click()
 
